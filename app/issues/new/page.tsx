@@ -2,14 +2,13 @@
 import "easymde/dist/easymde.min.css";
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { Button, TextField } from "@radix-ui/themes";
+import { Button, TextField, Callout } from "@radix-ui/themes";
 import SimpleMDE from "react-simplemde-editor";
 import { z } from "zod";
 import { IssueSchema } from "../IssueSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ErrorMessage from "@/app/components/ErrorMessage";
 import { useRouter } from "next/navigation";
-import { Callout } from "@radix-ui/themes";
 import Spinner from "@/app/components/Spinner";
 
 type IssueForm = z.infer<typeof IssueSchema>;
@@ -48,7 +47,7 @@ const IssueForm = () => {
   });
 
   return (
-    <form className="max-w-lg m-5 space-y-4" onSubmit={createIssue}>
+    <form className="space-y-4" onSubmit={createIssue}>
       {error && (
         <Callout.Root variant="surface" color="red">
           <Callout.Text color="red">{error}</Callout.Text>
@@ -72,6 +71,7 @@ const IssueForm = () => {
         Submit Issue
         {submitting && <Spinner />}
       </Button>
+      
     </form>
   );
 };
