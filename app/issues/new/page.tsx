@@ -9,7 +9,7 @@ import { IssueSchema } from "../IssueSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ErrorMessage from "@/app/components/ErrorMessage";
 import { useRouter } from "next/navigation";
-import Spinner from "@/app/components/Spinner";
+import { Spinner } from "@/app/components";
 
 type IssueForm = z.infer<typeof IssueSchema>;
 
@@ -71,7 +71,6 @@ const IssueForm = () => {
         Submit Issue
         {submitting && <Spinner />}
       </Button>
-      
     </form>
   );
 };
